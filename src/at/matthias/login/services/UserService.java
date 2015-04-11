@@ -16,43 +16,43 @@ import at.matthias.login.vo.User;
 
 
 
-@Path("tasks")
+@Path("users")
 public class UserService {
 
 	@GET
-	public List<User> getAllTasks() throws SQLException{
-		UserDAO dao = new UserDAO();
+	public List<User> getAllUsers() throws SQLException{
+		LoginDAO dao = new LoginDAO();
 		return dao.getAllUsers();
 		
 	}
 	
 	@POST
-	 public void insertTask(User u) throws SQLException{
-	 UserDAO dao = new UserDAO();
-	 dao.insertTask(u);
+	 public void insertUser(User u) throws SQLException{
+	 LoginDAO dao = new LoginDAO();
+	 dao.insertUser(u);
 	 }
 	
 	
 	@GET
 	@Path("/{id}")
-	public User getTaskById(@PathParam("id") int mid){
-		User u = new User("task number " + mid,null, null, mid);
+	public User getUserById(@PathParam("u_id") int mid){
+		User u = new User("user number " + mid,null, null, mid);
 		return u;
 	}
 	
 	@PUT
 	 @Path("/{id}")
-	 public void updateUser(@PathParam("id") int mid, User u) throws SQLException{
-	 UserDAO dao = new UserDAO();
+	 public void updateUser(@PathParam("u_id") int mid, User u) throws SQLException{
+	 LoginDAO dao = new LoginDAO();
 	 dao.updateUser(mid, u);
 	 }
 	
 	@DELETE
 	@Path("/{id}")
-	public Response deleteTask(@PathParam("id") int mid){
+	public Response deleteUser(@PathParam("u_id") int mid){
 		try{
-			TaskDAO dao = new TaskDAO();
-			dao.deleteTask(mid);
+			LoginDAO dao = new LoginDAO();
+			dao.deleteUser(mid);
 		}catch (Exception e){
 			e.printStackTrace();
 			return Response.serverError().build();
