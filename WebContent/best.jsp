@@ -173,9 +173,9 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a
-					href="#">New</a></li>
-				<li><a href="http://localhost:8080/BeatShare/best.jsp">Best</a></li>
+				<li><a
+					href="http://localhost:8080/BeatShare/index.jsp">New</a></li>
+				<li class="active"><a href="#">Best</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown mega-dropdown" id="fat-menu"><a
