@@ -20,7 +20,7 @@ public class LoginDAO {
 		}
 
 		while (!rs.isAfterLast()) {
-			User u = new User(rs.getString(2), sql, sql, rs.getInt(1));
+			User u = new User(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(1));
 			System.out.println(rs.getString(2));
 			uList.add(u);
 			rs.next();
@@ -31,7 +31,7 @@ public class LoginDAO {
 
 	public void insertUser(User u) throws SQLException {
 
-		String sql = "INSERT INTO tbl_user (username, email, password) VALUES (?,?,?)";
+		String sql = "INSERT INTO tbl_user (username, password, email) VALUES (?,?,?)";
 		PreparedStatement ps = getConnection().prepareStatement(sql);
 		ps.setString(1, u.getUsername());
 		ps.setString(1, u.getEmail());
@@ -41,7 +41,7 @@ public class LoginDAO {
 
 	public void updateUser(int mid, User u) throws SQLException {
 
-		String sql = "UPDATE tbl_user SET username = ?, email = ?, password = ? WHERE u_id = ?";
+		String sql = "UPDATE tbl_user SET username = ?, password = ?, email = ? WHERE u_id = ?";
 		PreparedStatement ps = getConnection().prepareStatement(sql);
 		ps.setString(1, u.getUsername());
 		ps.setString(1, u.getEmail());
@@ -72,7 +72,7 @@ public class LoginDAO {
 			// this will load the MySQL driver, each DB has its own driver
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager
-					.getConnection("jdbc:mysql://localhost/user?user=root&password=");
+					.getConnection("jdbc:mysql://localhost/beatshare?user=root&password=");
 			return con;
 		} catch (ClassNotFoundException e) {
 			return null;

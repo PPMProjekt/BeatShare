@@ -5,15 +5,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class User {
 	private String username;
-	private String email;
 	private String password;
+	private String email;
 	private int u_id;
 
-	public User(String username, String email, String password, int u_id) {
+	public User(){
+		
+	}
+	
+	public User(String username, String password, String email, int u_id) {
 		super();
 		this.username = username;
-		this.email = email;
 		this.password = password;
+		this.email = email;
 		this.u_id = u_id;
 	}
 

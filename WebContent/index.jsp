@@ -52,7 +52,7 @@
 
 	function loadAllusers() {
 	
-		$('#showInsertBarEdituser').fadeOut(0);
+		$('#showInsertBarEditUser').fadeOut(0);
 		
 		$.ajax({
 			headers : {
@@ -66,7 +66,7 @@
 				var code;
 				for (i = 0; i < data.user.length; i++) {
 					code = code + "<option value='" + data.user[i].id + "'> "
-							+ data.user[i].name + "</option>";
+							+ data.user[i].username + data.user[i].password + data.user[i].email "</option>";
 				}
 				$("#list").html(code);
 				//alert("users abgerufen");
@@ -84,7 +84,7 @@
 				Accept : 'application/json'
 			},
 			type : 'DELETE',
-			url : 'http://localhost:8080/REST_users_TC/rest/users/' + id,
+			url : 'http://localhost:8080/BeatShare/rest/users/' + id,
 
 			success : function(data) {
 				loadAllusers();
@@ -107,7 +107,7 @@
 			},
 			contentType : 'application/json',
 			type : 'POST',
-			url : 'http://localhost:8080/REST_users_TC/rest/users',
+			url : 'http://localhost:8080/BeatShare/rest/users',
 			data : JSON.stringify(user),
 			success : function(data) {
 				loadAllusers();
@@ -130,7 +130,7 @@
 			},
 			contentType : 'application/json',
 			type : 'PUT',
-			url : 'http://localhost:8080/REST_users_TC/rest/users/' + id,
+			url : 'http://localhost:8080/BeatShare/rest/users/' + id,
 			data : JSON.stringify(user),
 			success : function(data) {
 				loadAllusers();
@@ -144,7 +144,7 @@
 	
 	
 	function fadeEditBar(text){
-		$('#showInsertBarEdituser').fadeIn('slow');
+		$('#showInsertBarEditUser').fadeIn('slow');
 		$('edituser').val(text);
 		
 	}
@@ -163,7 +163,7 @@
 			<button class="btn" id="load"></button>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Neuer user</label> <input
-					type="text" class="form-control" id="adduser" width="50%"
+					type="text" class="form-control" id="addUser" width="50%"
 					placeholder="Enter user">
 				<button type="button" class="btn btn-success" id="add">+</button>
 			</div>
@@ -171,14 +171,14 @@
 			<select multiple class="form-control" id="list">
 				<label for="exampleInputEmail1">users</label>
 			</select>
-			<button type="button" class="btn btn-danger" id="deleteuser">Delete</button>
-			<button type="button" class="btn btn-warning" id="edituser">Edit</button>
-			<div id="showInsertBarEdituser">
+			<button type="button" class="btn btn-danger" id="deleteUser">Delete</button>
+			<button type="button" class="btn btn-warning" id="editUser">Edit</button>
+			<div id="showInsertBarEditUser">
 				<div class="form-group">
 
 					<input type="text" class="form-control" id="newName" width="50%"
 						placeholder="Enter new Name">
-					<button type="button" class="btn btn-warning" id="edituserSubmit">Add</button>
+					<button type="button" class="btn btn-warning" id="editUserSubmit">Add</button>
 				</div>
 			</div>
 		</div>

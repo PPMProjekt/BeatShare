@@ -34,21 +34,21 @@ public class UserService {
 	
 	
 	@GET
-	@Path("/{id}")
+	@Path("/{u_id}")
 	public User getUserById(@PathParam("u_id") int mid){
 		User u = new User("user number " + mid,null, null, mid);
 		return u;
 	}
 	
 	@PUT
-	 @Path("/{id}")
+	 @Path("/{u_id}")
 	 public void updateUser(@PathParam("u_id") int mid, User u) throws SQLException{
 	 LoginDAO dao = new LoginDAO();
 	 dao.updateUser(mid, u);
 	 }
 	
 	@DELETE
-	@Path("/{id}")
+	@Path("/{u_id}")
 	public Response deleteUser(@PathParam("u_id") int mid){
 		try{
 			LoginDAO dao = new LoginDAO();
