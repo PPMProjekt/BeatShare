@@ -229,7 +229,7 @@
 		<div class="col-xs-6 col-sm-4"></div>
 		<div class="col-xs-6 col-sm-4">
 
-			<button class="btn" id="load"></button>
+			
 			<div class="form-group">
 				<label for="exampleInputEmail1">Neuer user</label> <input
 					type="text" class="form-control" id="addUser" width="50%"
