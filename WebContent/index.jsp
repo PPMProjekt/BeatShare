@@ -173,10 +173,25 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a
-					href="#">New</a></li>
+				<li class="active"><a href="#">New</a></li>
 				<li><a href="http://localhost:8080/BeatShare/best.jsp">Best</a></li>
 			</ul>
+
+			<div class="col-sm-3 col-md-3 pull-left">
+				<form class="navbar-form">
+					<div style="padding-top: 3px"></div>
+					<div class="input-group">
+						<input class="search-query mac-style" type="text"
+							placeholder="Search">
+						<div class="input-group-btn">
+							<button id="submitSearch" class="btn btn-dafault" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+						</span>
+					</div>
+				</form>
+			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown mega-dropdown" id="fat-menu"><a
 					id="navLogin" class="dropdown-toggle" aria-expanded="false"
@@ -194,13 +209,15 @@
 							<li id="inputPassword" role="presentation"><input
 								type="text" class="form-control" placeholder="Enter Password"
 								href="#" tabindex="-1" role="menuitem" /></li> <br>
-							<li role="presentation"><button type="submit"
-									class="btn btn-default" tabindex="-1" role="menuitem">Login</button></li>
+							<li id="submitLogin" role="presentation"><button
+									type="submit" class="btn btn-default" tabindex="-1"
+									role="menuitem">Login</button></li>
 							<div style="padding-top: 6px"></div>
 							<li role="presentation"><a href="#" tabindex="-1"
 								role="menuitem">Register here </a></li>
 						</div>
 					</ul></li>
+
 			</ul>
 		</div>
 	</div>
