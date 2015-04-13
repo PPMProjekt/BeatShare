@@ -173,7 +173,7 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="http://localhost:8080/BeatShare/inedx.jsp">New</a></li>
+				<li><a href="http://localhost:8080/BeatShare/index.jsp">New</a></li>
 				<li class="active"><a href="#">Best</a></li>
 			</ul>
 
