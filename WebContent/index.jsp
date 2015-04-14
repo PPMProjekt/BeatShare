@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>BeatShare</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script
@@ -15,7 +15,15 @@
 	$(function() {
 
 		//Dropdown menu doesnt close with this
-		$('ul.dropdown-menu.mega-dropdown-menu').on('click', function(event) {
+		//$('ul.dropdown-menu.mega-dropdown-menu').on('click', function(event) {
+		//	event.stopPropagation();
+		//});
+
+		$('#inputPassword').on('click', function(event) {
+			event.stopPropagation();
+		});
+
+		$('#inputUsername').on('click', function(event) {
 			event.stopPropagation();
 		});
 
@@ -55,6 +63,28 @@
 		})
 
 	})
+
+	$(document).ready(function() {
+
+		$("#jquery_jplayer_1").jPlayer({
+			ready : function(event) {
+				$(this).jPlayer("setMedia", {
+					title : "Bubble",
+					m4a : "http://jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+					oga : "http://jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+				});
+			},
+			swfPath : "http://jplayer.org/latest/dist/jplayer",
+			supplied : "mp3, oga",
+			wmode : "window",
+			useStateClassSkin : true,
+			autoBlur : false,
+			smoothPlayBar : true,
+			keyEnabled : true,
+			remainingDuration : true,
+			toggleDuration : true
+		});
+	});
 
 	function loadAllUsers() {
 
@@ -204,18 +234,19 @@
 							<label for="exampleInputEmail1">Username</label>
 							<li id="inputUsername" role="presentation"><input
 								type="text" class="form-control" placeholder="Enter Username"
-								href="#" tabindex="-1" role="menuitem" /></li>
+								tabindex="-1" role="menuitem" /></li>
 							<div style="padding-top: 8px"></div>
 							<label for="exampleInputEmail1">Password</label>
 							<li id="inputPassword" role="presentation"><input
 								type="text" class="form-control" placeholder="Enter Password"
-								href="#" tabindex="-1" role="menuitem" /></li> <br>
+								tabindex="-1" role="menuitem" /></li> <br>
 							<li id="submitLogin" role="presentation"><button
 									type="submit" class="btn btn-default" tabindex="-1"
 									role="menuitem">Login</button></li>
 							<div style="padding-top: 6px"></div>
-							<li role="presentation"><a href="#" tabindex="-1"
-								role="menuitem">Register here </a></li>
+							<li role="presentation"><a herf="#" id="registerHere"
+								tabindex="-1" role="menuitem" data-target="#modalRegister"
+								data-toggle="modal">Register here </a></li>
 						</div>
 					</ul></li>
 
@@ -223,27 +254,81 @@
 		</div>
 	</div>
 	</nav>
+	<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog"
+		aria-labelledby="modalRegisterLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalRegisterLabel">Register</h4>
+				</div>
+				<div class="modal-body">
+					<label for="exampleInputEmail1">Enter Username</label> <input
+						type="text" class="form-control" placeholder="Enter Username" />
+					<div style="padding-top: 20px"></div>
+					<label for="exampleInputEmail1">Enter E-Mail</label> <input
+						type="text" class="form-control" placeholder="Enter Email" />
+					<div style="padding-top: 20px"></div>
+					<label for="exampleInputEmail1">Enter Password</label> <input
+						type="text" class="form-control" placeholder="Enter Password" />
+					<div style="padding-top: 12px"></div>
+					<label for="exampleInputEmail1">Repeat Password</label> <input
+						type="text" class="form-control" placeholder="Repeat Password" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Register</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<br>
 	<br>
 	<br>
 	<div class="row">
 		<div class="col-xs-6 col-sm-4"></div>
 		<div class="col-xs-6 col-sm-4">
+			<div style="padding-top: 30px"></div>
 			<div id="carousel-example-generic" class="carousel slide"
-				data-ride="carousel">
-				
+				data-ride="carousel" data-interval="false">
+
 
 				<!-- Wrapper for slides -->
+
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="..." alt="...">
-						<div class="carousel-caption">...</div>
+
+						<div class="carousel-caption">
+							<p>
+								<audio controls="controls" id="audiosource"> <source
+									type="audio/mp3" /> Your browser does not support the audio
+								element. </audio>
+							</p>
+							<p>
+								<input id="fileinput" type="file" name="filechooser" size="10"
+									accept="audio/*" onchange="fileSelected(this)"></input>
+							</p>
+							<p id="result"></p>
+						</div>
 					</div>
 					<div class="item">
-						<img src="..." alt="...">
-						<div class="carousel-caption">...</div>
+						<div class="carousel-caption">
+							<p>
+								<audio controls="controls" id="audiosource"> <source
+									type="audio/mp3" /> Your browser does not support the audio
+								element. </audio>
+							</p>
+							<p>
+								<input id="fileinput" type="file" name="filechooser" size="10"
+									accept="audio/*" onchange="fileSelected(this)"></input>
+							</p>
+							<p id="result"></p>
+						</div>
 					</div>
-					
+
 				</div>
 
 				<!-- Controls -->
@@ -257,6 +342,24 @@
 					<span class="sr-only">Next</span>
 				</a>
 			</div>
+
+
+
+
+
+
+			<div class="jp-details">
+				<div class="jp-title" aria-label="title">&nbsp;</div>
+			</div>
+			<div class="jp-no-solution">
+				<span>Update Required</span> To play the media you will need to
+				either update your browser to a recent version or update your <a
+					href="http://get.adobe.com/flashplayer/" target="_blank">Flash
+					plugin</a>.
+			</div>
+
+
+
 		</div>
 		<div class="clearfix visible-xs-block"></div>
 		<div class="col-xs-6 col-sm-4"></div>
