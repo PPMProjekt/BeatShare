@@ -222,8 +222,10 @@
 			</div>
 
 			<div class="nav navbar-nav">
-				<button tooltip="Upload" id="buttonUpload" class="btn btn-dafault btn-lg"
-					type="submit" style="padding-top: 15px">
+				<button tooltip="Upload" id="buttonUpload"
+					class="btn btn-dafault btn-lg" type="submit"
+					style="padding-top: 17px" data-target="#modalUpload"
+					data-toggle="modal">
 					<i class="glyphicon glyphicon-upload"></i>
 				</button>
 			</div>
@@ -261,6 +263,48 @@
 		</div>
 	</div>
 	</nav>
+
+	
+	
+	
+	<div class="row" style="margin: 0px; padding-top: 150px;">
+		<div class="col-xs-6 col-sm-4"></div>
+		<div class="col-xs-6 col-sm-4">
+			<div style="padding-top: 50px"></div>
+
+
+
+			<!-- Slider Controls -->
+			<div id="slider">
+				<a class="left carousel-control" href="#carousel-example-generic"
+					role="button" data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+
+				<div id="audioBar" style="display: table; margin: 0 auto;">
+					<audio style="" controls preload="auto"> <source
+						src="<%=request.getContextPath()%>/res/music/akku.mp3"
+						type="audio/mpeg" /> Your browser does not support the audio
+					element. </audio>
+				</div>
+
+				<a class="right carousel-control" href="#carousel-example-generic"
+					role="button" data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+
+
+
+		<div class="clearfix visible-xs-block"></div>
+		<div class="col-xs-6 col-sm-4"></div>
+	</div>
+
+
+	<!-- Modals (Register, Upload) -->
 	<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog"
 		aria-labelledby="modalRegisterLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -292,62 +336,41 @@
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<div class="row" style="margin: 0px">
-		<div class="col-xs-6 col-sm-4"></div>
-		<div class="col-xs-6 col-sm-4">
-			<div style="padding-top: 50px"></div>
-
-
-
-			<!-- Wrapper for slides -->
-
-
-
-			<!-- Controls -->
-
-			<div id="slider">
-				<a class="left carousel-control" href="#carousel-example-generic"
-					role="button" data-slide="prev"> <span
-					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-
-				<div id="audioBar" style="display: table; margin: 0 auto;">
-					<audio style="" controls preload="auto"> <source
-						src="<%=request.getContextPath()%>/res/baby.mp3" type="audio/mpeg" />
-					Your browser does not support the audio element. </audio>
+	<div class="modal fade" id="modalUpload" tabindex="-1" role="dialog"
+		aria-labelledby="modalUploadLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalUploadLabel">Upload your Beat</h4>
 				</div>
+				<div class="modal-body">
+					<label for="exampleInputEmail1">Enter Title</label> <input
+						type="text" class="form-control" placeholder="Enter Username" />
+					<div style="padding-top: 20px"></div>
+					<label for="exampleInputEmail1">Enter Artist</label> <input
+						type="text" class="form-control" placeholder="Enter Email" />
+					<div style="padding-top: 20px"></div>
+					<label for="exampleInputEmail1">Enter Genre</label> <input
+						type="text" class="form-control" placeholder="Enter Password" />
+					<div style="padding-top: 12px"></div>
+					<label for="exampleInputEmail1">Select mp3 File</label>
+					<form id="uploadForm" role="form" method="post">
+						<input type="file" id="uploadFile" accept=".mp3" />
+					</form>
 
-				<a class="right carousel-control" href="#carousel-example-generic"
-					role="button" data-slide="next"> <span
-					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
+					<output id="selectedFile"></output>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Upload</button>
+				</div>
 			</div>
-
-
-
-			<div style="padding-top: 5px"></div>
-			<form id="uploadForm" role="form" method="post">
-				<input type="file" id="uploadFile" accept=".mp3" />
-			</form>
-			
-			<output id="selectedFile"></output>
-
-
-
 		</div>
-
-
-
-		<div class="clearfix visible-xs-block"></div>
-		<div class="col-xs-6 col-sm-4"></div>
 	</div>
-
-
 
 
 
