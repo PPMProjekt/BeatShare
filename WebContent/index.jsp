@@ -64,27 +64,23 @@
 
 	})
 
-	$(document).ready(function() {
+	function dateiauswahl(evt) {
+		var files = evt.target.files; // FileList object
 
-		$("#jquery_jplayer_1").jPlayer({
-			ready : function(event) {
-				$(this).jPlayer("setMedia", {
-					title : "Bubble",
-					m4a : "http://jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
-					oga : "http://jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
-				});
-			},
-			swfPath : "http://jplayer.org/latest/dist/jplayer",
-			supplied : "mp3, oga",
-			wmode : "window",
-			useStateClassSkin : true,
-			autoBlur : false,
-			smoothPlayBar : true,
-			keyEnabled : true,
-			remainingDuration : true,
-			toggleDuration : true
-		});
-	});
+		//Deklarierung eines Array Objekts mit Namen "output" Speicherung von Eigenschaften
+		var output = [];
+		//Zählschleife, bei jedem Durchgang den Namen, Typ und die Dateigröße der ausgewählten Dateien zum Array hinzufügen
+		for (var i = 0, f; f = files[i]; i++) {
+			output.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a',
+					') - ', f.size, ' bytes</li>');
+		}
+		//Auf das Ausgabefeld zugreifen, unsortierte Liste erstellen und das oben erstellte Array auslesen lassen
+		document.getElementById('list').innerHTML = '<ul>' + output.join('')
+				+ '</ul>';
+	}
+	//Falls neue Eingabe, neuer Aufruf der Auswahlfunktion
+	document.getElementById('files').addEventListener('change', dateiauswahl,
+			false);
 
 	function loadAllUsers() {
 
@@ -210,7 +206,7 @@
 
 			<div class="col-sm-3 col-md-3 pull-left">
 				<form class="navbar-form">
-					<div style="padding-top: 3px"></div>
+					<div style="padding-top: 4px"></div>
 					<div class="input-group">
 						<input class="search-query mac-style" type="text"
 							placeholder="Search">
@@ -222,8 +218,19 @@
 						</span>
 					</div>
 				</form>
+
 			</div>
+
+			<div class="nav navbar-nav">
+				<button tooltip="Upload" id="buttonUpload" class="btn btn-dafault btn-lg"
+					type="submit" style="padding-top: 15px">
+					<i class="glyphicon glyphicon-upload"></i>
+				</button>
+			</div>
+
+
 			<ul class="nav navbar-nav navbar-right">
+
 				<li class="dropdown mega-dropdown" id="fat-menu"><a
 					id="navLogin" class="dropdown-toggle" aria-expanded="false"
 					role="button" aria-haspopup="true" data-toggle="dropdown" href="#">Login<span
@@ -288,55 +295,33 @@
 	<br>
 	<br>
 	<br>
-	<div class="row">
+	<div class="row" style="margin: 0px">
 		<div class="col-xs-6 col-sm-4"></div>
 		<div class="col-xs-6 col-sm-4">
-			<div style="padding-top: 30px"></div>
-			<div id="carousel-example-generic" class="carousel slide"
-				data-ride="carousel" data-interval="false">
+			<div style="padding-top: 50px"></div>
 
 
-				<!-- Wrapper for slides -->
 
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
+			<!-- Wrapper for slides -->
 
-						<div class="carousel-caption">
-							<p>
-								<audio controls="controls" id="audiosource"> <source
-									type="audio/mp3" /> Your browser does not support the audio
-								element. </audio>
-							</p>
-							<p>
-								<input id="fileinput" type="file" name="filechooser" size="10"
-									accept="audio/*" onchange="fileSelected(this)"></input>
-							</p>
-							<p id="result"></p>
-						</div>
-					</div>
-					<div class="item">
-						<div class="carousel-caption">
-							<p>
-								<audio controls="controls" id="audiosource"> <source
-									type="audio/mp3" /> Your browser does not support the audio
-								element. </audio>
-							</p>
-							<p>
-								<input id="fileinput" type="file" name="filechooser" size="10"
-									accept="audio/*" onchange="fileSelected(this)"></input>
-							</p>
-							<p id="result"></p>
-						</div>
-					</div>
 
-				</div>
 
-				<!-- Controls -->
+			<!-- Controls -->
+
+			<div id="slider">
 				<a class="left carousel-control" href="#carousel-example-generic"
 					role="button" data-slide="prev"> <span
 					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
-				</a> <a class="right carousel-control" href="#carousel-example-generic"
+				</a>
+
+				<div id="audioBar" style="display: table; margin: 0 auto;">
+					<audio style="" controls preload="auto"> <source
+						src="<%=request.getContextPath()%>/res/baby.mp3" type="audio/mpeg" />
+					Your browser does not support the audio element. </audio>
+				</div>
+
+				<a class="right carousel-control" href="#carousel-example-generic"
 					role="button" data-slide="next"> <span
 					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
@@ -345,22 +330,19 @@
 
 
 
-
-
-
-			<div class="jp-details">
-				<div class="jp-title" aria-label="title">&nbsp;</div>
-			</div>
-			<div class="jp-no-solution">
-				<span>Update Required</span> To play the media you will need to
-				either update your browser to a recent version or update your <a
-					href="http://get.adobe.com/flashplayer/" target="_blank">Flash
-					plugin</a>.
-			</div>
+			<div style="padding-top: 5px"></div>
+			<form id="uploadForm" role="form" method="post">
+				<input type="file" id="uploadFile" accept=".mp3" />
+			</form>
+			
+			<output id="selectedFile"></output>
 
 
 
 		</div>
+
+
+
 		<div class="clearfix visible-xs-block"></div>
 		<div class="col-xs-6 col-sm-4"></div>
 	</div>
