@@ -187,7 +187,7 @@
 
 <body>
 
-
+	<!-- Menu start -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-haeder">
@@ -203,7 +203,6 @@
 				<li class="active"><a href="#">New</a></li>
 				<li><a href="http://localhost:8080/BeatShare/best.jsp">Best</a></li>
 			</ul>
-
 			<div class="col-sm-3 col-md-3 pull-left">
 				<form class="navbar-form">
 					<div style="padding-top: 4px"></div>
@@ -218,9 +217,7 @@
 						</span>
 					</div>
 				</form>
-
 			</div>
-
 			<div class="nav navbar-nav">
 				<button tooltip="Upload" id="buttonUpload"
 					class="btn btn-dafault btn-lg" type="submit"
@@ -229,10 +226,7 @@
 					<i class="glyphicon glyphicon-upload"></i>
 				</button>
 			</div>
-
-
 			<ul class="nav navbar-nav navbar-right">
-
 				<li class="dropdown mega-dropdown" id="fat-menu"><a
 					id="navLogin" class="dropdown-toggle" aria-expanded="false"
 					role="button" aria-haspopup="true" data-toggle="dropdown" href="#">Login<span
@@ -258,21 +252,19 @@
 								data-toggle="modal">Register here </a></li>
 						</div>
 					</ul></li>
-
 			</ul>
 		</div>
 	</div>
 	</nav>
+	<!-- Menu end -->
 
-	
-	
-	
+
+
+	<!-- Body start -->
 	<div class="row" style="margin: 0px; padding-top: 150px;">
 		<div class="col-xs-6 col-sm-4"></div>
 		<div class="col-xs-6 col-sm-4">
 			<div style="padding-top: 50px"></div>
-
-
 
 			<!-- Slider Controls -->
 			<div id="slider">
@@ -296,12 +288,10 @@
 				</a>
 			</div>
 		</div>
-
-
-
 		<div class="clearfix visible-xs-block"></div>
 		<div class="col-xs-6 col-sm-4"></div>
 	</div>
+	<!-- Body end -->
 
 
 	<!-- Modals (Register, Upload) -->
@@ -349,14 +339,14 @@
 				</div>
 				<div class="modal-body">
 					<label for="exampleInputEmail1">Enter Title</label> <input
-						type="text" class="form-control" placeholder="Enter Username" />
+						type="text" class="form-control" placeholder="Title" />
 					<div style="padding-top: 20px"></div>
 					<label for="exampleInputEmail1">Enter Artist</label> <input
-						type="text" class="form-control" placeholder="Enter Email" />
+						type="text" class="form-control" placeholder="Artist" />
 					<div style="padding-top: 20px"></div>
 					<label for="exampleInputEmail1">Enter Genre</label> <input
-						type="text" class="form-control" placeholder="Enter Password" />
-					<div style="padding-top: 12px"></div>
+						type="text" class="form-control" placeholder="Genre" />
+					<div style="padding-top: 20px"></div>
 					<label for="exampleInputEmail1">Select mp3 File</label>
 					<form id="uploadForm" role="form" method="post">
 						<input type="file" id="uploadFile" accept=".mp3" />
@@ -371,7 +361,7 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- Modals end -->
 
 
 </body>
