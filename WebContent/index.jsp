@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,11 +15,7 @@
 <script type="text/javascript">
 	$(function() {
 
-		//Dropdown menu doesnt close with this
-		//$('ul.dropdown-menu.mega-dropdown-menu').on('click', function(event) {
-		//	event.stopPropagation();
-		//});
-
+		//Login Dropdown stop from closing
 		$('#inputPassword').on('click', function(event) {
 			event.stopPropagation();
 		});
@@ -62,25 +59,13 @@
 			editFieldAdd.val('');
 		})
 
+		$('#confirmUpload').click(function() {
+			adduser();
+			editFieldAdd = $('#addUser');
+			editFieldAdd.val('');
+		})
+
 	})
-
-	function dateiauswahl(evt) {
-		var files = evt.target.files; // FileList object
-
-		//Deklarierung eines Array Objekts mit Namen "output" Speicherung von Eigenschaften
-		var output = [];
-		//Zählschleife, bei jedem Durchgang den Namen, Typ und die Dateigröße der ausgewählten Dateien zum Array hinzufügen
-		for (var i = 0, f; f = files[i]; i++) {
-			output.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a',
-					') - ', f.size, ' bytes</li>');
-		}
-		//Auf das Ausgabefeld zugreifen, unsortierte Liste erstellen und das oben erstellte Array auslesen lassen
-		document.getElementById('list').innerHTML = '<ul>' + output.join('')
-				+ '</ul>';
-	}
-	//Falls neue Eingabe, neuer Aufruf der Auswahlfunktion
-	document.getElementById('files').addEventListener('change', dateiauswahl,
-			false);
 
 	function loadAllUsers() {
 
@@ -348,15 +333,18 @@
 						type="text" class="form-control" placeholder="Genre" />
 					<div style="padding-top: 20px"></div>
 					<label for="exampleInputEmail1">Select mp3 File</label>
-					<form id="uploadForm" role="form" method="post">
-						<input type="file" id="uploadFile" accept=".mp3" />
+					<form id="uploadForm" action="upload"
+						enctype="multipart/form-data" method="post">
+						<input type="file" name="file"
+							accept=".mp3" /> <input type="submit" value="upload" />
 					</form>
 
 					<output id="selectedFile"></output>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Upload</button>
+					<button id="confirmUpload" type="submit" value="Upload File"
+						class="btn btn-primary">Upload</button>
 				</div>
 			</div>
 		</div>
